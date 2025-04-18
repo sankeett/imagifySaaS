@@ -2,12 +2,8 @@
     "version": 2,
     "builds": [
       {
-        "src": "client/**/*",
-        "use": "@vercel/vite",
-        "config": {
-          "root": "client",
-          "outDir": "dist"
-        }
+        "src": "client/dist/**",
+        "use": "@vercel/static"
       },
       {
         "src": "server/server.js",
@@ -23,5 +19,7 @@
         "src": "/(.*)",
         "dest": "client/dist/index.html"
       }
-    ]
+    ],
+    "installCommand": "cd client && npm install && npm run build && cd ../server && npm install",
+    "buildCommand": "cd client && npm run build"
   }
